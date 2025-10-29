@@ -6,7 +6,6 @@ Date: [Date]
 AI Usage: [Document any AI assistance used]
 Example: AI helped with file I/O error handling logic in save_character function
 """
-
 def create_character(name, character_class):
     """
     Creates a new character dictionary with calculated stats
@@ -18,7 +17,8 @@ def create_character(name, character_class):
     """
     # TODO: Implement this function
     # Remember to use calculate_stats() function for stat calculation
-    character_info = {"name": name, "class": character_class, "level": level,"strength":calculate_stats(character_class,level)[0], "magic":calculate_stats(character_class,level)[1], "health":calculate_stats(character_class,level)[2],"gold": 100}
+    stats = (character_class, 1)
+    character_info = {"name": name, "class": character_class, "level": level, "strength": stats[0], "magic":stats[1], "health": stats[2],"gold": 100}
     return character_info
 
 def calculate_stats(character_class, level):
@@ -34,7 +34,32 @@ def calculate_stats(character_class, level):
     """
     # TODO: Implement this function
     # Return a tuple: (strength, magic, health)
-    pass
+    strength = 0
+    magic = 0
+    health = 0
+    # Calculation for Warrior Stats
+    if character_class == "Warrior":
+        strength = str((20 * level))
+        magic = str((2 * level))
+        health = str((5 * level))
+    # Calculation for Mage Stats
+    elif character_class == "Mage":
+        strength = str((2 * level))
+        magic = str((20 * level))
+        health = str((10 * level))
+    # Calculation for Rouge Stats
+    elif character_class == "Rouge":
+        strength = str((10 * level))
+        magic = str((10 * level))
+        health = str((5 * level))
+    #Calculation for Cleric Stats
+    elif character_class == "Cleric":
+        strength = str((10 * level))
+        magic = str((20 * level))
+        health = str((20 * level))
+    else:
+        return "That is not an option"
+    return (strength,magic,health)
 
 def save_character(character, filename):
     """
@@ -52,7 +77,16 @@ def save_character(character, filename):
     """
     # TODO: Implement this function
     # Remember to handle file errors gracefully
-    pass
+    character = create_character(name, character_class)
+    with open(filename, "w") as characterfile:
+        characterfile.write(f"Character Name: {character}\n")
+        characterfile.write(f"Class: {character[1]} \n")
+        characterfile.write(f"Level: {character[2} \n")
+        characterfile.write(f"Strength: {character[3]} \n")
+        characterfile.write(f"Magic: {character[4]} \n")
+        characterfile.write(f"Health: {character[5]} \n")
+        characterfile.write(f"Gold: {character[1]} \n")
+    return os.path.isfile 
 
 def load_character(filename):
     """
@@ -61,7 +95,12 @@ def load_character(filename):
     """
     # TODO: Implement this function
     # Remember to handle file not found errors
-    pass
+    if os.path.isfile(filename) == True:
+        return create_character(name, character_class)
+    else:
+        Return "None"
+        
+        
 
 def display_character(character):
     """
@@ -79,7 +118,15 @@ def display_character(character):
     Gold: 100
     """
     # TODO: Implement this function
-    pass
+    print(f"=== CHARACTER SHEET ===\n")
+    print(f"=== CHARACTER SHEET ===\n")
+    print(f"Name: {character}")
+    print(f"")
+    pri(f"")
+        characterfile.write(f"")
+        characterfile.write(f"")
+        characterfile.write(f"")
+        characterfile.write(f"")
 
 def level_up(character):
     """
