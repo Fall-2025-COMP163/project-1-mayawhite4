@@ -98,7 +98,7 @@ def load_character(filename):
     if os.path.isfile(filename) == True:
         return create_character(name, character_class)
     else:
-        Return print("None")
+        return "None"
         
         
 
