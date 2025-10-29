@@ -18,7 +18,8 @@ def create_character(name, character_class):
     """
     # TODO: Implement this function
     # Remember to use calculate_stats() function for stat calculation
-    pass
+    character_info = {"name": name, "class": character_class, "level": level,"strength":calculate_stats(character_class,level)[0], "magic":calculate_stats(character_class,level)[1], "health":calculate_stats(character_class,level)[2],"gold": 100}
+    return character_info
 
 def calculate_stats(character_class, level):
     """
