@@ -79,7 +79,7 @@ def save_character(character, filename):
     """
     # TODO: Implement this function
     # Remember to handle file errors gracefully
-    persona = create_character(name, character_class)
+    persona = create_character(character, character_class)
     with open(filename, "w") as characterfile:
         characterfile.write(f"Character Name: {character}\n")
         characterfile.write(f"Class: {persona[1]} \n")
@@ -102,7 +102,6 @@ def load_character(filename):
     else:
         return "None"
         
-        
 
 def display_character(character):
     """
@@ -119,16 +118,17 @@ def display_character(character):
     Health: 80
     Gold: 100
     """
+    persona = create_character(name, character_class)
     # TODO: Implement this function
     print(f"=== CHARACTER SHEET ===\n")
     print(f"=== CHARACTER SHEET ===\n")
     print(f"Name: {character}")
-    print(f"")
-    print(f"")
-    print(f"")
-    print(f"")
-    print(f"")
-    print(f"")
+    print(f"Class: {persona[1]}")
+    print(f"Level: {persona[2]}")
+    print(f"Strength: {persona[3]}")
+    print(f"Magic: {persona[4]}")
+    print(f"Health: {}")
+    print(f"Gold: {}")
 
 def level_up(character):
     """
