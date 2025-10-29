@@ -1,11 +1,13 @@
 """
 COMP 163 - Project 1: Character Creator & Saving/Loading
-Name: [Your Name Here]
-Date: [Date]
+Name: Maya White 
+Date: 10/28/25
 
 AI Usage: [Document any AI assistance used]
 Example: AI helped with file I/O error handling logic in save_character function
 """
+import os
+
 def create_character(name, character_class):
     """
     Creates a new character dictionary with calculated stats
@@ -77,16 +79,16 @@ def save_character(character, filename):
     """
     # TODO: Implement this function
     # Remember to handle file errors gracefully
-    character = create_character(name, character_class)
+    persona = create_character(name, character_class)
     with open(filename, "w") as characterfile:
         characterfile.write(f"Character Name: {character}\n")
-        characterfile.write(f"Class: {character[1]} \n")
-        characterfile.write(f"Level: {character[2]} \n")
-        characterfile.write(f"Strength: {character[3]} \n")
-        characterfile.write(f"Magic: {character[4]} \n")
-        characterfile.write(f"Health: {character[5]} \n")
-        characterfile.write(f"Gold: {character[1]} \n")
-    return os.path.isfile 
+        characterfile.write(f"Class: {persona[1]} \n")
+        characterfile.write(f"Level: {persona[2]} \n")
+        characterfile.write(f"Strength: {persona[3]} \n")
+        characterfile.write(f"Magic: {persona[4]} \n")
+        characterfile.write(f"Health: {persona[5]} \n")
+        characterfile.write(f"Gold: {persona[6]} \n")
+    return os.path.isfile(filename) 
 
 def load_character(filename):
     """
