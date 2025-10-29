@@ -98,7 +98,7 @@ def load_character(filename):
     if os.path.isfile(filename) == True:
         return create_character(name, character_class)
     else:
-        Return "None"
+        Return None
         
         
 
@@ -122,11 +122,11 @@ def display_character(character):
     print(f"=== CHARACTER SHEET ===\n")
     print(f"Name: {character}")
     print(f"")
-    pri(f"")
-        characterfile.write(f"")
-        characterfile.write(f"")
-        characterfile.write(f"")
-        characterfile.write(f"")
+    print(f"")
+    print(f"")
+    print(f"")
+    print(f"")
+    print(f"")
 
 def level_up(character):
     """
