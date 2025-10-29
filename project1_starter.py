@@ -83,11 +83,11 @@ def save_character(character, filename):
     with open(filename, "w") as characterfile:
         characterfile.write(f"Character Name: {character}\n")
         characterfile.write(f"Class: {persona[1]} \n")
-        characterfile.write(f"Level: {persona[2]} \n")
-        characterfile.write(f"Strength: {persona[3]} \n")
-        characterfile.write(f"Magic: {persona[4]} \n")
-        characterfile.write(f"Health: {persona[5]} \n")
-        characterfile.write(f"Gold: {persona[6]} \n")
+        characterfile.write(f"Level: {str(persona[2])} \n")
+        characterfile.write(f"Strength: {str(persona[3])} \n")
+        characterfile.write(f"Magic: {str(persona[4])} \n")
+        characterfile.write(f"Health: {str(persona[5])} \n")
+        characterfile.write(f"Gold: {str(persona[6])} \n")
     return os.path.isfile(filename) 
 
 def load_character(filename):
@@ -118,7 +118,7 @@ def display_character(character):
     Health: 80
     Gold: 100
     """
-    persona = create_character(name, character_class)
+    persona = create_character(character, character_class)
     # TODO: Implement this function
     print(f"=== CHARACTER SHEET ===\n")
     print(f"=== CHARACTER SHEET ===\n")
@@ -127,8 +127,8 @@ def display_character(character):
     print(f"Level: {persona[2]}")
     print(f"Strength: {persona[3]}")
     print(f"Magic: {persona[4]}")
-    print(f"Health: {}")
-    print(f"Gold: {}")
+    print(f"Health: {persona[5]}")
+    print(f"Gold: {persona[6]}")
 
 def level_up(character):
     """
