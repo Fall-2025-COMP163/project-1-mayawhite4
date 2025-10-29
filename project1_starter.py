@@ -81,7 +81,7 @@ def save_character(character, filename):
     with open(filename, "w") as characterfile:
         characterfile.write(f"Character Name: {character}\n")
         characterfile.write(f"Class: {character[1]} \n")
-        characterfile.write(f"Level: {character[2} \n")
+        characterfile.write(f"Level: {character[2]} \n")
         characterfile.write(f"Strength: {character[3]} \n")
         characterfile.write(f"Magic: {character[4]} \n")
         characterfile.write(f"Health: {character[5]} \n")
