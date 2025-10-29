@@ -61,7 +61,7 @@ def calculate_stats(character_class, level=1):
         health = (20 * level)
     else:
         return "That is not an option"
-    return (strength,magic,health)
+    return (strength,magic,health, character_class)
 
 def save_character(character, filename):
     """
@@ -79,8 +79,7 @@ def save_character(character, filename):
     """
     # TODO: Implement this function
     # Remember to handle file errors gracefully
-    character_class = character_info[1]
-    persona = create_character(character, character_class)
+    persona = create_character(character, stats[3])
     with open(filename, "w") as characterfile:
         characterfile.write(f"Character Name: {character}\n")
         characterfile.write(f"Class: {persona[1]} \n")
