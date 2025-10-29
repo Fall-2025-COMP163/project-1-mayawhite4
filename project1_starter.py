@@ -39,24 +39,24 @@ def calculate_stats(character_class, level=1):
     health = 0
     # Calculation for Warrior Stats
     if character_class == "Warrior":
-        strength = str((20 * level))
-        magic = str((2 * level))
-        health = str((5 * level))
+        strength = (20 * level)
+        magic = (2 * level)
+        health = (5 * level)
     # Calculation for Mage Stats
     elif character_class == "Mage":
-        strength = str((2 * level))
-        magic = str((20 * level))
-        health = str((10 * level))
+        strength = (2 * level)
+        magic = (20 * level)
+        health = (10 * level)
     # Calculation for Rouge Stats
     elif character_class == "Rouge":
-        strength = str((10 * level))
-        magic = str((10 * level))
-        health = str((5 * level))
+        strength = (10 * level)
+        magic = (10 * level)
+        health = (5 * level)
     #Calculation for Cleric Stats
     elif character_class == "Cleric":
-        strength = str((10 * level))
-        magic = str((20 * level))
-        health = str((20 * level))
+        strength = (10 * level)
+        magic = (20 * level)
+        health = (20 * level)
     else:
         return "That is not an option"
     return (strength,magic,health)
