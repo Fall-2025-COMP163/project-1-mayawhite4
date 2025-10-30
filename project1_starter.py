@@ -118,6 +118,7 @@ def display_character(character):
     Health: 80
     Gold: 100
     """
+
     persona = create_character(character, character_class)
     # TODO: Implement this function
     print(f"=== CHARACTER SHEET ===\n")
