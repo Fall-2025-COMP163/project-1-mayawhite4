@@ -61,7 +61,7 @@ def calculate_stats(character_class, level=1):
         health = (20 * level)
     else:
         return "That is not an option"
-    return (strength,magic,health, character_class)
+    return (strength,magic,health)
 
 def save_character(character, filename):
     """
@@ -80,14 +80,17 @@ def save_character(character, filename):
     # TODO: Implement this function
     # Remember to handle file errors gracefully
     persona = create_character(character, "Mage") # This is hardcoded because we don't use and input here
-    with open(filename, "w") as characterfile:
-        characterfile.write(f"Character Name: {character}\n")
-        characterfile.write(f"Class: {persona[1]} \n")
-        characterfile.write(f"Level: {str(persona[2])} \n")
-        characterfile.write(f"Strength: {str(persona[3])} \n")
-        characterfile.write(f"Magic: {str(persona[4])} \n")
-        characterfile.write(f"Health: {str(persona[5])} \n")
-        characterfile.write(f"Gold: {str(persona[6])} \n")
+    if os.path.isfile(filename) == False:
+        return False
+    else:
+        with open(filename, "w") as characterfile:
+            characterfile.write(f"Character Name: {character}\n")
+            characterfile.write(f"Class: {persona[1]} \n")
+            characterfile.write(f"Level: {str(persona[2])} \n")
+            characterfile.write(f"Strength: {str(persona[3])} \n")
+            characterfile.write(f"Magic: {str(persona[4])} \n")
+            characterfile.write(f"Health: {str(persona[5])} \n")
+            characterfile.write(f"Gold: {str(persona[6])} \n")
     return os.path.isfile(filename) 
 
 def load_character(filename):
@@ -98,7 +101,7 @@ def load_character(filename):
     # TODO: Implement this function
     # Remember to handle file not found errors
     if os.path.isfile(filename) == True:
-        return create_character(name, character_class)
+        return create_character(name, "Mage")
     else:
         return "None"
         
@@ -119,17 +122,17 @@ def display_character(character):
     Gold: 100
     """
 
-    persona = create_character(character, character_class)
+    persona = create_character(character, "Mage")
     # TODO: Implement this function
     print(f"=== CHARACTER SHEET ===\n")
     print(f"=== CHARACTER SHEET ===\n")
     print(f"Name: {character}")
-    print(f"Class: {persona[1]}")
-    print(f"Level: {persona[2]}")
-    print(f"Strength: {persona[3]}")
-    print(f"Magic: {persona[4]}")
-    print(f"Health: {persona[5]}")
-    print(f"Gold: {persona[6]}")
+    print(f"Class: {persona["class"]}")
+    print(f"Level: {persona["level"]}")
+    print(f"Strength: {persona["strength"]}")
+    print(f"Magic: {persona["magic"]}")
+    print(f"Health: {persona["health"]}")
+    print(f"Gold: {persona["gold"]}")
 
 def level_up(character):
     """
@@ -139,13 +142,19 @@ def level_up(character):
     """
     # TODO: Implement this function
     # Remember to recalculate stats for the new level
-    pass
+    character["level"] += 1
+    character["strength"] += 6
+    character["magic"] += 4
+    character["health"] += 5
+    character["gold"] += 200
+    return None
+
 
 # Main program area (optional - for testing your functions)
 if __name__ == "__main__":
     print("=== CHARACTER CREATOR ===")
     print("Test your functions here!")
-    
+
     # Example usage:
     # char = create_character("TestHero", "Warrior")
     # display_character(char)
