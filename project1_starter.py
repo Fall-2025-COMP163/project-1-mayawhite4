@@ -79,16 +79,17 @@ def save_character(character, filename):
     """
     # TODO: Implement this function
     # Remember to handle file errors gracefully
-    if os.path.exists(filename) == True:
-        with open(filename, "w") as characterfile:
-            characterfile.write(f"Character Name: {character}\n")
-            characterfile.write(f"Class: {character["class"]} \n")
-            characterfile.write(f"Level: {str(character["level"])} \n")
-            characterfile.write(f"Strength: {str(character["strength"])} \n")
-            characterfile.write(f"Magic: {str(character["magic"])} \n")
-            characterfile.write(f"Health: {str(character["health"])} \n")
-            characterfile.write(f"Gold: {str(character["gold"])} \n")
-    if os.path.isfile(filename) == True:
+    with open(filename, "w") as characterfile:
+        characterfile.write(f"Character Name: {character}\n")
+        characterfile.write(f"Class: {character["class"]} \n")
+        characterfile.write(f"Level: {str(character["level"])} \n")
+        characterfile.write(f"Strength: {str(character["strength"])} \n")
+        characterfile.write(f"Magic: {str(character["magic"])} \n")
+        characterfile.write(f"Health: {str(character["health"])} \n")
+        characterfile.write(f"Gold: {str(character["gold"])} \n")
+
+
+    if os.path.isfile(filename):
         return True
     else:
         return False
@@ -100,10 +101,11 @@ def load_character(filename):
     """
     # TODO: Implement this function
     # Remember to handle file not found errors
-    file = open(filename, "r")
-    save_character()
-    if os.path.isfile(file) == True:
-        return character
+    persona = save_character(filename, filename)
+    if os.path.exists(filename) == True:
+        with open(filename, "r") as file:
+        file.readline()
+        return
     else:
         return None
         
