@@ -60,7 +60,6 @@ class TestErrorHandling:
         result = save_character(char, "/invalid/directory/path/test.txt")
         assert isinstance(result, bool), "save_character should return a boolean even on error"
         assert result == False, "save_character should return False when save fails"
-
     def test_create_character_with_empty_name(self):
         """Test creating character with empty name"""
         char = create_character("", "Warrior")

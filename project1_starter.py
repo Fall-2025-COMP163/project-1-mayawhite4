@@ -50,7 +50,7 @@ def calculate_stats(character_class, level=1):
         magic = (20 * level)
         health = (10 * level)
     # Calculation for Rouge Stats
-    elif character_class == "Rouge":
+    elif character_class == "Rogue":
         strength = (10 * level)
         magic = (10 * level)
         health = (5 * level)
@@ -79,19 +79,19 @@ def save_character(character, filename):
     """
     # TODO: Implement this function
     # Remember to handle file errors gracefully
-    persona = create_character(character, "Mage") # This is hardcoded because we don't use and input here
-    if os.path.isfile(filename) == False:
-        return False
-    else:
+    if os.path.exists(filename) == True:
         with open(filename, "w") as characterfile:
             characterfile.write(f"Character Name: {character}\n")
-            characterfile.write(f"Class: {persona[1]} \n")
-            characterfile.write(f"Level: {str(persona[2])} \n")
-            characterfile.write(f"Strength: {str(persona[3])} \n")
-            characterfile.write(f"Magic: {str(persona[4])} \n")
-            characterfile.write(f"Health: {str(persona[5])} \n")
-            characterfile.write(f"Gold: {str(persona[6])} \n")
-    return os.path.isfile(filename) 
+            characterfile.write(f"Class: {character["class"]} \n")
+            characterfile.write(f"Level: {str(character["level"])} \n")
+            characterfile.write(f"Strength: {str(character["strength"])} \n")
+            characterfile.write(f"Magic: {str(character["magic"])} \n")
+            characterfile.write(f"Health: {str(character["health"])} \n")
+            characterfile.write(f"Gold: {str(character["gold"])} \n")
+    if os.path.isfile(filename) == True:
+        return True
+    else:
+        return False
 
 def load_character(filename):
     """
@@ -100,10 +100,12 @@ def load_character(filename):
     """
     # TODO: Implement this function
     # Remember to handle file not found errors
-    if os.path.isfile(filename) == True:
-        return create_character(name, "Mage")
+    file = open(filename, "r")
+    save_character()
+    if os.path.isfile(file) == True:
+        return character
     else:
-        return "None"
+        return None
         
 
 def display_character(character):
@@ -122,17 +124,16 @@ def display_character(character):
     Gold: 100
     """
 
-    persona = create_character(character, "Mage")
     # TODO: Implement this function
     print(f"=== CHARACTER SHEET ===\n")
     print(f"=== CHARACTER SHEET ===\n")
     print(f"Name: {character}")
-    print(f"Class: {persona["class"]}")
-    print(f"Level: {persona["level"]}")
-    print(f"Strength: {persona["strength"]}")
-    print(f"Magic: {persona["magic"]}")
-    print(f"Health: {persona["health"]}")
-    print(f"Gold: {persona["gold"]}")
+    print(f"Class: {character["class"]}")
+    print(f"Level: {character["level"]}")
+    print(f"Strength: {character["strength"]}")
+    print(f"Magic: {character["magic"]}")
+    print(f"Health: {character["health"]}")
+    print(f"Gold: {character["gold"]}")
 
 def level_up(character):
     """
