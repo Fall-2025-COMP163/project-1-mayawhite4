@@ -79,6 +79,7 @@ def save_character(character, filename):
     """
     # TODO: Implement this function
     # Remember to handle file errors gracefully
+
     with open(filename, "w") as characterfile:
         characterfile.write(f"Character Name: {character}\n")
         characterfile.write(f"Class: {character["class"]} \n")
