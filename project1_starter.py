@@ -79,7 +79,6 @@ def save_character(character, filename):
     """
     # TODO: Implement this function
     # Remember to handle file errors gracefully
-
     with open(filename, "w") as characterfile:
         characterfile.write(f"Character Name: {character}\n")
         characterfile.write(f"Class: {character["class"]} \n")
@@ -102,14 +101,18 @@ def load_character(filename):
     """
     # TODO: Implement this function
     # Remember to handle file not found errors
-    persona = save_character(filename, filename)
-    if os.path.exists(filename) == True:
+    character_info = []
+    if os.path.exists(filename):
         with open(filename, "r") as file:
-        file.readline()
-        return
+            for line in file:
+                clean = line.strip()
+                cleaned_list = clean.split(":",1)[1]
+                character_info.append(cleaned_list)
+                print(character_info)
+        character = {"name": cleaned_list[0], "class": cleaned_list[1], "level": cleaned_list[2], "strength": cleaned_list[3], "magic": cleaned_list[4], "health": cleaned_list[5], "gold": cleaned_list[6]}
+        return character
     else:
         return None
-        
 
 def display_character(character):
     """
