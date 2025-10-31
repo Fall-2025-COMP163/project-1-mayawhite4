@@ -79,17 +79,15 @@ def save_character(character, filename):
     """
     # TODO: Implement this function
     # Remember to handle file errors gracefully
-    with open(filename, "w") as characterfile:
-        characterfile.write(f"Character Name: {character}\n")
-        characterfile.write(f"Class: {character["class"]} \n")
-        characterfile.write(f"Level: {str(character["level"])} \n")
-        characterfile.write(f"Strength: {str(character["strength"])} \n")
-        characterfile.write(f"Magic: {str(character["magic"])} \n")
-        characterfile.write(f"Health: {str(character["health"])} \n")
-        characterfile.write(f"Gold: {str(character["gold"])} \n")
-
-
-    if os.path.isfile(filename):
+    if os.path.exists(filename):
+        with open(filename, "w") as characterfile:
+            characterfile.write(f"Character Name: {character}\n")
+            characterfile.write(f"Class: {character["class"]} \n")
+            characterfile.write(f"Level: {str(character["level"])} \n")
+            characterfile.write(f"Strength: {str(character["strength"])} \n")
+            characterfile.write(f"Magic: {str(character["magic"])} \n")
+            characterfile.write(f"Health: {str(character["health"])} \n")
+            characterfile.write(f"Gold: {str(character["gold"])} \n")
         return True
     else:
         return False
@@ -109,7 +107,9 @@ def load_character(filename):
                 cleaned_list = clean.split(":",1)[1]
                 character_info.append(cleaned_list)
                 print(character_info)
-        character = {"name": cleaned_list[0], "class": cleaned_list[1], "level": cleaned_list[2], "strength": cleaned_list[3], "magic": cleaned_list[4], "health": cleaned_list[5], "gold": cleaned_list[6]}
+        character = {"name": character_info[0], "class": character_info[1], "level": character_info[2],
+                     "strength": character_info[3], "magic": character_info[4], "health": character_info[5],
+                     "gold": character_info[6]}
         return character
     else:
         return None
