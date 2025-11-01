@@ -106,10 +106,8 @@ def load_character(filename):
                 clean = line.strip()
                 cleaned_list = clean.split(":",1)[1]
                 character_info.append(cleaned_list)
-                print(character_info)
-        character = {"name": character_info[0], "class": character_info[1], "level": character_info[2],
-                     "strength": character_info[3], "magic": character_info[4], "health": character_info[5],
-                     "gold": character_info[6]}
+
+        character = {"name": character_info[0], "class": character_info[1], "level": character_info[2], "strength": character_info[3], "magic": character_info[4], "health": character_info[5], "gold": character_info[6]}
         return character
     else:
         return None
@@ -166,4 +164,6 @@ if __name__ == "__main__":
     # char = create_character("TestHero", "Warrior")
     # display_character(char)
     # save_character(char, "my_character.txt")
-    # loaded = load_character("my_character.txt")
+    loaded = load_character("hero1.txt")
+    print(loaded)
+
