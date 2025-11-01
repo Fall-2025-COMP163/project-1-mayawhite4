@@ -3,8 +3,7 @@ COMP 163 - Project 1: Character Creator & Saving/Loading
 Name: Maya White 
 Date: 10/28/25
 
-AI Usage: [Document any AI assistance used]
-Example: AI helped with file I/O error handling logic in save_character function
+AI helped with helping me understand why code was wrong or why a code didn't pass a test case
 """
 import os
 
@@ -49,7 +48,7 @@ def calculate_stats(character_class, level=1):
         strength = (2 * level)
         magic = (20 * level)
         health = (10 * level)
-    # Calculation for Rouge Stats
+    # Calculation for Rogue Stats
     elif character_class == "Rogue":
         strength = (10 * level)
         magic = (10 * level)
@@ -81,14 +80,13 @@ def save_character(character, filename):
     # Remember to handle file errors gracefully
     if os.path.exists(filename):
         with open(filename, "w") as characterfile:
-            characterfile.write(f"Character Name: {character}\n")
+            characterfile.write(f"Character Name: {character["name"]}\n")
             characterfile.write(f"Class: {character["class"]} \n")
             characterfile.write(f"Level: {str(character["level"])} \n")
             characterfile.write(f"Strength: {str(character["strength"])} \n")
             characterfile.write(f"Magic: {str(character["magic"])} \n")
             characterfile.write(f"Health: {str(character["health"])} \n")
             characterfile.write(f"Gold: {str(character["gold"])} \n")
-        return True
     else:
         return False
 
@@ -131,7 +129,7 @@ def display_character(character):
     # TODO: Implement this function
     print(f"=== CHARACTER SHEET ===\n")
     print(f"=== CHARACTER SHEET ===\n")
-    print(f"Name: {character}")
+    print(f"Name: {character["name"]}")
     print(f"Class: {character["class"]}")
     print(f"Level: {character["level"]}")
     print(f"Strength: {character["strength"]}")
@@ -161,9 +159,9 @@ if __name__ == "__main__":
     print("Test your functions here!")
 
     # Example usage:
-    # char = create_character("TestHero", "Warrior")
-    # display_character(char)
-    # save_character(char, "my_character.txt")
+    char = create_character("TestHero", "Warrior")
+    display_character(char)
+    save_character(char, "my_character.txt")
     loaded = load_character("hero1.txt")
     print(loaded)
 
